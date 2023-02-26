@@ -1,34 +1,64 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+
 import './App.css'
+  
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
+function check(){
+  return(
+    <form>
+      <label>
+        <input type = "checkbox" />
+        {' '}
+        Only show products in stock
+      </label>
+    </form>
   )
 }
 
-export default App
+
+  function ProductRow({ product }) {
+
+    return (
+      <tr>
+        <td>{product.name}</td>
+        <td>{product.amount}</td>
+        <td>{product.price}</td>
+      </tr>
+    );
+  }
+  
+  function ProductTable({ products}) {
+    const rows = [];
+    products.forEach((product) => {
+      rows.push(
+        <ProductRow
+          product={product}/>
+      );
+         });
+  
+    return (
+      <table>
+        <tbody>{rows}</tbody>
+      </table>
+    );
+    
+  }
+  
+
+
+  
+  const PRODUCTS = [
+    {price: "40 kr", amount:"2 Stk", name: "Rose"},
+    {price: "35 kr", amount:"1 Stk", name: "Scheffler"},
+    {price: "120 kr", amount:"4 Stk", name: "Pions"},
+  ];
+
+
+  export default function App() {
+    return < ProductTable products={PRODUCTS} />;
+  }
+
+
+  
+   
+  
+        
