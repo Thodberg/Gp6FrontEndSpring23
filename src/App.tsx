@@ -1,19 +1,5 @@
 
 import './App.css'
-  
-
-function check(){
-  return(
-    <form>
-      <label>
-        <input type = "checkbox" />
-        {' '}
-        Only show products in stock
-      </label>
-    </form>
-  )
-}
-
 
   function ProductRow({ product }) {
 
